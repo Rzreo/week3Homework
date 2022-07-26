@@ -1,5 +1,6 @@
 package com.sparta.weekendhomework.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -20,23 +21,24 @@ public class Memo extends Timestamped{
     @Column(nullable = false)
     private String username;
 
+    @JsonIgnore
     @Column(nullable = false)
     private String password;
 
     @Column(nullable = false)
-    private String desc;
+    private String content;
 
 
     public Memo(MemoRequestDto requestDto){
         this.title = requestDto.getTitle();
-        this.desc = requestDto.getDesc();
+        this.content = requestDto.getContent();
         this.username = requestDto.getUsername();
         this.password = requestDto.getPassword();
     }
 
     public void update(MemoRequestDto requestDto) {
         this.title = requestDto.getTitle();
-        this.desc = requestDto.getDesc();
+        this.content = requestDto.getContent();
         this.username = requestDto.getUsername();
         this.password = requestDto.getPassword();
     }
